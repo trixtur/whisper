@@ -66,7 +66,7 @@ func TestMockManager_Read(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			mgr := NewMockManager()
-			mgr.Write(tt.content)
+			_ = mgr.Write(tt.content)
 
 			got, err := mgr.Read()
 			if (err != nil) != tt.wantErr {

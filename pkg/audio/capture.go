@@ -96,8 +96,8 @@ func (c *portAudioCapturer) IsRecording() bool {
 }
 
 // Cleanup terminates the portaudio library
-func Cleanup() {
-	portaudio.Terminate()
+func Cleanup() error {
+	return portaudio.Terminate()
 }
 
 // SaveToWAV saves the audio buffer to a WAV file
