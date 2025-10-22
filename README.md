@@ -258,7 +258,7 @@ Note: Audio capture tests are limited due to hardware dependencies. In productio
 
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2025 Ben Payne
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
