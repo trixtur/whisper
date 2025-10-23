@@ -44,8 +44,11 @@ speech-to-clipboard/
    sudo dnf install portaudio-devel
 
    # Windows
-   # Download from http://www.portaudio.com/download.html
+   # See docs/WINDOWS_BUILD.md for detailed instructions
    ```
+
+   **Windows users:** Building on Windows requires additional setup (MSYS2, MinGW, etc.).
+   See [docs/WINDOWS_BUILD.md](docs/WINDOWS_BUILD.md) for complete step-by-step instructions.
 
 2. **Clipboard support** - Usually built-in on most systems
    - macOS: Uses `pbcopy`/`pbpaste`
