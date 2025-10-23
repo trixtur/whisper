@@ -2,6 +2,28 @@
 
 This guide provides step-by-step instructions for building the speech-to-clipboard application on Windows.
 
+## Quick Start (Automated)
+
+The easiest way to build on Windows is to use one of our automated build scripts:
+
+**PowerShell (Recommended):**
+```powershell
+powershell -ExecutionPolicy Bypass -File build-windows.ps1
+```
+
+**Command Prompt (CMD):**
+```cmd
+build-windows.bat
+```
+
+These scripts will:
+- Check for required tools (Go, MSYS2)
+- Install missing dependencies (GCC, pkg-config, PortAudio)
+- Set up the build environment
+- Compile the application
+
+**If the automated scripts work for you, you're done!** If you need manual installation or encounter issues, continue reading below.
+
 ## Prerequisites
 
 The application requires CGO (C bindings) due to the PortAudio dependency. You'll need:
@@ -10,7 +32,7 @@ The application requires CGO (C bindings) due to the PortAudio dependency. You'l
 2. **MSYS2** (provides MinGW-w64 compiler and pkg-config)
 3. **PortAudio library**
 
-## Installation Steps
+## Manual Installation Steps
 
 ### 1. Install MSYS2
 

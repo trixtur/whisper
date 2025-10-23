@@ -101,13 +101,34 @@ export STT_LANGUAGE="en"
 ## Usage
 
 1. Build the application:
+
+   **Linux/macOS:**
    ```bash
    go build -o speech-to-clipboard ./cmd/speech-to-clipboard
    ```
 
+   **Windows:**
+   ```powershell
+   # Using automated build script (recommended)
+   powershell -ExecutionPolicy Bypass -File build-windows.ps1
+
+   # Or using batch file
+   build-windows.bat
+
+   # Or manually
+   go build -o speech-to-clipboard.exe .\cmd\speech-to-clipboard
+   ```
+
 2. Run the application:
+
+   **Linux/macOS:**
    ```bash
    ./speech-to-clipboard
+   ```
+
+   **Windows:**
+   ```powershell
+   .\speech-to-clipboard.exe
    ```
 
 3. Follow the on-screen instructions:
