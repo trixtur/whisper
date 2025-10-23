@@ -119,8 +119,8 @@ echo [OK] Dependencies downloaded
 echo.
 
 REM Build the application
-echo Building application...
-go build -o speech-to-clipboard.exe .\cmd\speech-to-clipboard
+echo Building application with static linking...
+go build -ldflags "-extldflags=-static" -o speech-to-clipboard.exe .\cmd\speech-to-clipboard
 if %ERRORLEVEL% NEQ 0 (
     echo.
     echo [ERROR] Build failed
