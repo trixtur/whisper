@@ -30,7 +30,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to initialize audio capturer: %v", err)
 	}
-	defer audio.Cleanup()
+	defer func() {
+		if err := audio.Cleanup(); err != nil {
+			log.Printf("Error cleaning up audio: %v", err)
+		}
+	}()
 
 	transcriber := stt.NewWhisperTranscriber(cfg.OpenAIAPIKey)
 	clipMgr := clipboard.NewManager()
@@ -49,7 +53,9 @@ func main() {
 		<-sigChan
 		fmt.Println("\n\nShutting down...")
 		if capturer.IsRecording() {
-			capturer.Stop()
+			if err := capturer.Stop(); err != nil {
+				log.Printf("Error stopping capturer: %v", err)
+			}
 		}
 		os.Exit(0)
 	}()
@@ -57,7 +63,7 @@ func main() {
 	// Main loop
 	for {
 		fmt.Print("Press ENTER to start recording: ")
-		fmt.Scanln()
+		_, _ = fmt.Scanln()
 
 		fmt.Println("Recording... Press ENTER to stop")
 		if err := capturer.Start(); err != nil {
@@ -66,7 +72,7 @@ func main() {
 		}
 
 		// Wait for user to press ENTER again
-		fmt.Scanln()
+		_, _ = fmt.Scanln()
 
 		fmt.Println("Stopping recording...")
 		if err := capturer.Stop(); err != nil {
