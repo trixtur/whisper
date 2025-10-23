@@ -50,8 +50,20 @@ jobs:
     - name: Run tests
       run: go test -v ./...
 
-    - name: Run tests with coverage
+    - name: Run tests with coverage (Unix)
+      if: runner.os != 'Windows'
       run: go test -coverprofile=coverage.out ./...
 
-    - name: Display coverage
+    - name: Run tests with coverage (Windows)
+      if: runner.os == 'Windows'
+      shell: bash
+      run: go test -coverprofile=coverage.out ./...
+
+    - name: Display coverage (Unix)
+      if: runner.os != 'Windows'
+      run: go tool cover -func=coverage.out
+
+    - name: Display coverage (Windows)
+      if: runner.os == 'Windows'
+      shell: bash
       run: go tool cover -func=coverage.out
