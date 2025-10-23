@@ -152,8 +152,8 @@ Write-Host " [OK]" -ForegroundColor Green
 Write-Host ""
 
 # Build the application
-Write-Host "Building application..." -NoNewline
-go build -o speech-to-clipboard.exe .\cmd\speech-to-clipboard 2>&1 | Out-Null
+Write-Host "Building application with static linking..." -NoNewline
+go build -ldflags "-extldflags=-static" -o speech-to-clipboard.exe .\cmd\speech-to-clipboard 2>&1 | Out-Null
 if ($LASTEXITCODE -ne 0) {
     Write-Host " [ERROR]" -ForegroundColor Red
     Write-Host ""

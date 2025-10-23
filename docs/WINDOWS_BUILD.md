@@ -155,6 +155,27 @@ go build -o speech-to-clipboard.exe ./cmd/speech-to-clipboard
 .\speech-to-clipboard.exe
 ```
 
+## Distributing the Binary
+
+The build scripts use static linking to create a standalone executable that includes all necessary libraries. This means:
+
+✅ **The `.exe` file can run on other Windows machines without installing dependencies**
+
+The binary is statically linked with:
+- PortAudio library
+- MinGW runtime libraries
+- All Go dependencies
+
+Users on other Windows machines can simply:
+1. Copy `speech-to-clipboard.exe` to their machine
+2. Set their `OPENAI_API_KEY` environment variable
+3. Run the application
+
+**Note:** The target machine still needs:
+- A microphone (for audio capture)
+- Internet connection (for OpenAI API)
+- No additional DLLs or libraries needed!
+
 ## Running Tests
 
 ```bash
